@@ -1,13 +1,3 @@
-const sinon = require('sinon');
-const chai = require('chai');
-const WeatherService = require('./../src/weather.service.js');
-
-// Jquery Mock Hackery :(
-const $ = {
-    get: () => {}
-};
-global.$ = $;
-
 describe('WeatherService', () => {
     let subject;
 
@@ -25,8 +15,7 @@ describe('WeatherService', () => {
                     'weather':[{'id':804,'main':'clouds','description':'overcast clouds','icon':'04n'}],
                     'main':{'temp':289.5,'humidity':89,'pressure':1013,'temp_min':287.04,'temp_max':292.04}
                 },
-                getStub = sinon.stub($, 'get')
-                    .callsFake((url, data, success) => {
+                getStub = sinon.stub($, 'get', (url, data, success) => {
                         success(mockWeatherData);
                     });
 
@@ -40,7 +29,7 @@ describe('WeatherService', () => {
             getStub.restore();
         });
 
-        it('should call external API with the lat and lon and return an empty object on failure', () => {
+        it('should call external API with the lat and lon and return null on failure', () => {
             // ARRANGE
             let lat = 35,
                 lon = 139,
@@ -48,8 +37,7 @@ describe('WeatherService', () => {
                     'weather':[{'id':804,'main':'clouds','description':'overcast clouds','icon':'04n'}],
                     'main':{'temp':289.5,'humidity':89,'pressure':1013,'temp_min':287.04,'temp_max':292.04}
                 },
-                getStub = sinon.stub($, 'get')
-                    .callsFake((url, data, success) => {});
+                getStub = sinon.stub($, 'get', (url, data, success) => {});
 
             // ACT
             let result = subject.getWeatherByGeo(lat, lon);
