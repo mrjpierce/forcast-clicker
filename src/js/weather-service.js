@@ -9,14 +9,7 @@ class WeatherService {
     }
 
     getWeatherByGeo(lat, lon) {
-        let deferred = $.Deferred()
-        let configData = { 
-            lat, 
-            lon, 
-            id: 524901,
-            units: this.units, 
-            APPID: this.apikey 
-        };
+        let deferred = $.Deferred();
         
         $.ajax(this.genWeatherByGeoUrl(lat, lon))
             .done((data) => {
