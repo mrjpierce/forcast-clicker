@@ -6,19 +6,49 @@
     <body>
         <h3>Click a point on the map to see the current weather information for that location</h3>
         <div id="map"></div>
-        <div id="weather" hidden>
-            <div id="location"></div>
-            <div id="condition"></div>
-            <div id="temperature"></div>
-            <div id="humidity"></div>
-            <div id="sunrise"></div>
-            <div id="sunset"></div>
-            <div id="wind-speed"></div>
-            <div id="wind-direction"></div>
+        <div id="weather-container">
+            <div id="weather">
+                <div id="weather-loading"></div>
+                <div id="weather-success" hidden>
+                    <div class="weather-row">
+                        <div class="weather-label">Location: </div>
+                        <div class="weather-data" id="location"></div>
+                    </div>
+                    <div class="weather-row">
+                        <div class="weather-label">Condition: </div>
+                        <div class="weather-data" id="condition"></div>
+                    </div>
+                    <div class="weather-row">
+                        <div class="weather-label">Temperature: </div>
+                        <div class="weather-data" id="temperature"></div>
+                    </div>
+                    <div class="weather-row">
+                        <div class="weather-label">Humidity: </div>
+                        <div class="weather-data" id="humidity"></div>
+                    </div>
+                    <div class="weather-row">
+                        <div class="weather-label">Sunrise: </div>
+                        <div class="weather-data" id="sunrise"></div>
+                    </div>
+                    <div class="weather-row">
+                        <div class="weather-label">Sunset: </div>
+                        <div class="weather-data" id="sunset"></div>
+                    </div>
+                    <div class="weather-row">
+                        <div class="weather-label">Wind Speed: </div>
+                        <div class="weather-data" id="wind-speed"></div>
+                    </div>
+                    <div class="weather-row">
+                        <div class="weather-label">Wind Direction: </div>
+                        <div class="weather-data" id="wind-direction"></div>
+                    </div>
+                </div>
+                <div id="weather-error" hidden>
+                    <h3>There was an error connecting to the server</h3>
+                </div>
+            </div>
         </div>
-        <div id="api-error">
-            <h3>There was an error connecting to the server</h3>
-        </div>
+
         <script src="../node_modules/moment/min/moment.min.js"></script>
         <script src="../node_modules/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="js/map-wrapper.js"></script>

@@ -1,7 +1,7 @@
 #map {
+    float: left;
     height: 400px;
     width: 50%;
-    float: left;
 }
 
 h3 {
@@ -11,3 +11,42 @@ h3 {
 #condition {
     text-transform: capitalize;
 }
+
+#weather-container {
+    float: left;
+    width: 50%;
+    height: 400px;
+}
+
+#weather {
+    height: 100%;
+    width: 95%;
+    margin: 0 auto;
+}
+
+#weather-loading {
+    background:url(loader.gif) no-repeat center center;
+    height: 50%;
+    width: 100%;
+}
+
+#weather-success div.weather-row:nth-child(odd) {
+    background-color: #A0A7F5;
+}
+
+#weather-success div.weather-row:nth-child(even) {
+    background-color: #F5F2A0;
+}
+
+.weather-label {
+    width: 50%;
+    font-weight: bold;
+    display: inline-block;
+    text-align: right;
+    margin: 5px 0px 5px 0px;
+}
+
+.weather-data {
+    display: inline-block;
+}
+
