@@ -38,12 +38,21 @@ h3 {
     background-color: #F5F2A0;
 }
 
+#weather-icon {
+    height: 32px;
+    width: 32px;
+}
+
+.weather-row {
+    padding: 8px 0px 8px 0px;
+}
+
 .weather-label {
     width: 50%;
     font-weight: bold;
     display: inline-block;
     text-align: right;
-    margin: 5px 0px 5px 0px;
+    
 }
 
 .weather-data {

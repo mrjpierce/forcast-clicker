@@ -25,19 +25,28 @@ class MapWrapper {
         this.updateUIState('loading');
         let response = this.weatherService.getWeatherByGeo(lat, lng)
             .done((response) => {
-                console.log(response);
-                // Set data
+                
+                // Set data grid
                 let data = response,
                     sunrise = moment.unix(+data.sys.sunrise),
-                    sunset = moment.unix(+data.sys.sunset);
+                    sunset = moment.unix(+data.sys.sunset),
+                    weatherIcon = this.weatherService.genIconUrl(data.weather[0].icon);
+
                 $('#location').html(response.name);
                 $('#condition').html(data.weather[0].description);
+                $('#weather-icon').attr("src", weatherIcon);
                 $('#temperature').html(data.main.temp + ' F');
                 $('#humidity').html(data.main.humidity + '%');
                 $('#sunrise').html(sunrise.format('HH:mm'));
                 $('#sunset').html(sunset.format('HH:mm'));
                 $('#wind-speed').html(data.wind.speed + ' mph');
                 $('#wind-direction').html(data.wind.deg + ' degrees');
+
+                // Set marker
+                this.marker.setIcon({
+                    url: weatherIcon,
+                    scaledSize: new google.maps.Size(64, 64)
+                });
 
                 this.updateUIState('success');
             })
